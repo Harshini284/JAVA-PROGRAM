@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class Solution {
+
+    public int[] replaceElements(int[] arr) {
+        int n = arr.length;
+        int[] ans = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int rightMax = -1;
+
+            for (int j = i + 1; j < n; j++) {
+                rightMax = Math.max(rightMax, arr[j]);
+            }
+
+            ans[i] = rightMax;
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter array elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        Solution obj = new Solution();
+        int[] result = obj.replaceElements(arr);
+
+        System.out.println("Array after replacement:");
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+
+        sc.close();
+    }
+}
